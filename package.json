@@ -1,0 +1,14 @@
+{
+  "name": "namaste-react-practice",
+  "version": "1.0.0",
+  "description": "Welcome to my repository where I document my progress and learnings from the \"Namaste React\" course by Akshay Saini, hosted on NamasteDev. This course offers an in-depth exploration into React.js, covering everything from the fundamentals to advanced concepts.",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "parcel": "^2.12.0"
+  }
+}
