@@ -1,6 +1,38 @@
-const parent = React.createElement("div", {id:"parent"}, 
-    React.createElement("div", {id:"child"}, 
-        [React.createElement("h1", {}, "I am H1"),
-            React.createElement("h2", {}, "I am H2")]));
-        const root = ReactDOM.createRoot(document.getElementById("root"));
-        root.render(parent);
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+const heading = React.createElement(
+    "h1",
+    { id: "h1" },
+    "Namaste React using Core React"
+)
+
+console.log(heading);
+
+const jsxHeading = <h1 id="h1"> Namaste React using JSX wuhuuuu</h1>;
+console.log(jsxHeading);
+
+//React Components 
+//functional component
+//ALWAYS START component with a capital letter
+const HeadingComponent = () => {
+    return <h1 className="h1" >Namaste React by Functional Component</h1>
+}
+const Title = () => {
+    return <h1 className="h1" >Hello I am being nested using component composition</h1>
+}
+
+
+const HeadingComponent2 = () => (
+    <div id="container">
+        <Title/>;
+        <h1 className="h1" >Namaste React by Functional Component</h1>
+    </div>
+
+)
+
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+//root.render(jsxHeading);
+root.render(<HeadingComponent2 />);
