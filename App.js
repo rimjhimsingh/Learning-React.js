@@ -22,16 +22,16 @@ const Title = () => {
     return <h1 className="h1" >Hello I am being nested using component composition</h1>
 }
 
-
+//className property used by JSX, instead of class like in HTML
 const HeadingComponent2 = () => (
     <div id="container">
+        {Title()};
+        <Title></Title>
         <Title/>;
-        <h1 className="h1" >Namaste React by Functional Component</h1>
+        <h1 className="h1" >Namaste React by Functional Component</h1> 
     </div>
 
 )
-
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 //root.render(jsxHeading);
