@@ -32,17 +32,19 @@ const Header = () => {
         </div>
     )
 }
-const RestaurantCard = () => {
+const RestaurantCard = (props) => {
+    const {resName, cuisine, rating,deliveryTime,imageSrc} = props;
+
     return (
-        <div className = "card-container">
-            <img className = "mcd-img"src="https://wallpapers.com/images/featured-full/mcdonalds-food-pictures-0ck29igd9pnfxuud.jpg"/>
+        <div className="card-container">
+            <img className="mcd-img" src={imageSrc} />
             <div className="res-text">
-            <h3>MCD</h3>
-            <h4>Cuisine</h4>
-            <h5>Rating</h5>
-            <h6>Delivery Time</h6> 
+                <h3>{resName}</h3>
+                <h4>{cuisine}</h4>
+                <h5>{rating}</h5>
+                <h6>{deliveryTime}</h6>
             </div>
-    
+
         </div>
     )
 }
@@ -53,18 +55,22 @@ const Body = () => {
                 <h4>Search your Favourite restaurants</h4>
             </div>
             <div className="res-container">
-            {<RestaurantCard/>}
-            {<RestaurantCard/>}
-            {<RestaurantCard/>}
-            {<RestaurantCard/>}
-            {<RestaurantCard/>}
-            {<RestaurantCard/>}
-            {<RestaurantCard/>}
-            {<RestaurantCard/>}
-            {<RestaurantCard/>}
-           
-            </div>
+                {<RestaurantCard
+                    resName="McD"
+                    cuisine="Burgers, fries, icecream machine is broken"
+                    deliveryTime="20 minutes"
+                    rating="4.5 stars"
+                    imageSrc="https://wallpapers.com/images/featured-full/mcdonalds-food-pictures-0ck29igd9pnfxuud.jpg" />}
+                {<RestaurantCard
+                    resName="Spice of India"
+                    cuisine="Indian, Indo-Chinese"
+                    deliveryTime="45 minutes"
+                    rating="4.9 stars"
+                    imageSrc="https://146953715.cdn6.editmysite.com/uploads/1/4/6/9/146953715/s545502237994334893_p31_i1_w500.png" />}
             
+            </div>
+
+
 
         </div>
 
