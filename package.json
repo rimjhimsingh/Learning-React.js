@@ -4,7 +4,7 @@
   "description": "Welcome to my repository where I document my progress and learnings from the \"Namaste React\" course by Akshay Saini, hosted on NamasteDev. This course offers an in-depth exploration into React.js, covering everything from the fundamentals to advanced concepts.",
   "scripts": {
     "test": "jest",
-    "start": "parcel index.html",
+    "start": "parcel Ep4/index.html",
     "build": "parcel build index.html"
   },
   "author": "",
