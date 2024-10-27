@@ -1147,11 +1147,12 @@ const RestaurantCard = (props) => {
 
     return (
         <div className="card-container">
-            <img className="mcd-img" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_366/"+ resData?.info?.cloudinaryImageId} />
+            <img className="res-img" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_366/"+ resData?.info?.cloudinaryImageId} />
             <div className="res-text">
                 <h3>{resData?.info?.name}</h3>
-                <h5>{resData?.info?.locality}</h5>
-                <h5>{resData?.info?.avgRating}</h5>
+                <h5>{resData?.info?.locality + ", " +resData?.info?.areaName}</h5>
+                <h5>{resData?.info?.avgRating }</h5>
+                <h5>{resData?.info?.costForTwo }</h5>
             </div>
         </div>
     )

@@ -33,16 +33,16 @@ h4 {
 }
 .card-container {
   background-color: antiquewhite;
-  width: 200px;
-  height:350px;
+  width: 350px;
 }
 .card-container:hover {
   border: 2px solid rgb(48, 23, 8);
   cursor: pointer;
 }
-.mcd-img {
+.res-img {
   width: 100%;
-  
+  height:400px;
+
 }
 .mcd-img:hover {
   width: 100%;
@@ -68,5 +68,5 @@ h4 {
 }
 .Banner{
   width:100%;
-  
+
 }
