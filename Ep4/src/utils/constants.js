@@ -1,35 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-/*
-- header
-    - logo
-    - nav items
-- body
-    - restaurant cards
-- footer
-    - location 
-    - links
-    
- */
-
-const Header = () => {
-    return (
-        <div className="header">
-            <div className="logo-container">
-                <img className="logo" src="https://images.vexels.com/content/296149/preview/father-s-day-food-groceries-bag-icon-e71df6.png" />
-            </div>
-
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact Us</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
-    )
-}
+export const LOGO_URL = "https://images.vexels.com/content/296149/preview/father-s-day-food-groceries-bag-icon-e71df6.png"
+export const CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_366/"
 
 const resList =  [
     {
@@ -1142,55 +1112,6 @@ const resList =  [
       "widgetId": "collectionV5RestaurantListWidget_byName"
     }
   ];
-const RestaurantCard = (props) => {
-    const { resData } = props;
-    console.log(resData);
 
-    return (
-        <div className="card-container">
-            <img className="res-img" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_366/"+ resData?.info?.cloudinaryImageId} />
-            <div className="res-text">
-                <h3>{resData?.info?.name}</h3>
-                <h5>{resData?.info?.locality + ", " +resData?.info?.areaName}</h5>
-                <h5>{resData?.info?.avgRating }</h5>
-                <h5>{resData?.info?.costForTwo }</h5>
-            </div>
-        </div>
-    )
-}
-const Body = () => {
-    return (
-        <div className="body-container">
-            {/* <div className="Banner">
-                <img className="Banner" src="https://www.shutterstock.com/shutterstock/photos/2252477835/display_1500/stock-photo-healthy-breakfast-food-table-scene-top-down-view-over-a-white-wood-banner-background-omelette-2252477835.jpg" />
-
-            </div> */}
-            <div className="search">
-                <h4>Search your Favourite restaurants</h4>
-            </div>
-            <div className="res-container">
-                {resList.map((restaurant) => (
-                    <RestaurantCard key={restaurant.storeUuid} resData={restaurant} /> //storeUid is given in the data
-                ))}
-            </div>
-        </div>
-    )
-}
-
-
-// this is the Layout where everything else will go 
-// it is a component which is a normal function in js, returns a JSX object
-const AppLayout = () => {
-    return (
-        <div className="app">
-            {<Header></Header>}
-            {<Body></Body>}
-
-
-        </div>
-    )
-}
-
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+  export default resList;
+ 
