@@ -1144,6 +1144,7 @@ const resList =  [
   ];
 const RestaurantCard = (props) => {
     const { resData } = props;
+    console.log(resData);
 
     return (
         <div className="card-container">
