@@ -70,5 +70,25 @@ h4 {
 
 }
 .btn{
+  padding: 10px;
+  margin: 20px;
+}
+.login-btn{
+  padding: 0 15px;
+  cursor: pointer;
+  background-color: antiquewhite;
+  margin: 8px;
+}
+.shimmerCard{
+  background-color: rgb(224, 224, 224);
+  width: 250px;
+  height: 400px;
   padding: 20px;
+  margin: 10px;
+
+}
+.shimmer{
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 70px;
 }

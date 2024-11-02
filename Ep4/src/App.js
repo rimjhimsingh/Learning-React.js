@@ -13,8 +13,6 @@ const AppLayout = () => {
         <div className="app">
             {<Header></Header>}
             {<Body></Body>}
-
-
         </div>
     )
 }
