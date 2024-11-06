@@ -1,9 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-//default imports for the components
 import Header from "./components/Header"; 
 import Body from "./components/Body";
-
+import {
+    createBrowserRouter,
+    RouterProvider,
+    Outlet
+  } from "react-router-dom"
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Error from "./components/Error";
+import RestaurantMenuCard from "./components/RestaurantMenuCard"
 
 
 // this is the Layout where everything else will go 
@@ -12,11 +19,37 @@ const AppLayout = () => {
     return (
         <div className="app">
             {<Header></Header>}
-            {<Body></Body>}
+            <Outlet/>
         </div>
     )
 }
+const appRouter = createBrowserRouter([
+    {
+        path: "/",
+        element: <AppLayout/>,
+        children: [
+            {
+                path: "/",
+                element: <Body/>
+            },
+            {
+                path: "/about",
+                element: <About/>
+            },
+            {
+                path: "/contact",
+                element: <Contact/>
+            },
+            {
+                path: "/restaurants/:resId", //this means that resId is dynamic, will chnage with restaurants
+                element: <RestaurantMenuCard/>,
+            }
+        ],
+        errorElement: <Error/>
+    },
+    
+]);
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+root.render(<RouterProvider router = {appRouter}/>);
