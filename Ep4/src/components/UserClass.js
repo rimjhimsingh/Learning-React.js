@@ -2,32 +2,39 @@ import React from "react";
 class UserClass extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props);
-
+        
         this.state = {
-            count: 0
-        }
+            userInfo : {
+                name: "hello dummy",
+                location: "dummy location bud",
+                id: null,
+            },
+            
+        };
+        console.log(this.props.name + "Child Constructor");
+    }
+
+    async componentDidMount(){
+        //we will make api calls here
+
+        const data = await fetch("https://api.github.com/users/rimjhimsingh");
+        const json = await data.json(); //you forgot to do () here
+        this.setState({
+            userInfo: json,
+        })
+        console.log(json);
     }
 
     render() {
-        const { name, location, handle } = this.props;
-        const { count } = this.state;
-
+        const { name, location, id, avatar_url } = this.state.userInfo;
+       
         return (
             <div className="box-about">
-
-                <h2>{this.props.name}</h2>
-                <h3>{this.props.location}</h3>
-                <h4>{this.props.handle}</h4>
-                <h4>Current count is: {count}</h4>
-                <button className="smilebtn" onClick={() => {
-                    //update the count
-                    this.setState({
-                        count: this.state.count + 1,
-                    });
-
-                }}
-                >Smile Counter </button>
+                <img src = {avatar_url} />
+                <h2>{name}</h2>
+                <h3>{location}</h3>
+                <h4>{id}</h4>
+                <h4>@rimjhimsingh</h4>
 
             </div>
         )
