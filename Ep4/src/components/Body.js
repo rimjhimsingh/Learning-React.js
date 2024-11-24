@@ -2,14 +2,15 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import resList from "../utils/constants"
 import Shimmer from "./Shimmer.js"
-import {Link} from "react-router-dom"
-
-
+import { Link } from "react-router-dom"
+import useOnlineStatus from "../utils/useOnlineStatus.js";
 
 const Body = () => {
 
   const [listofRestaurants, setlistofRestaurants] = useState([]);
+
   //make a copy of this list, and we use the copy to diaply on UI and use the original to search and perform functionalities on 
+
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   const [searchText, setsearchText] = useState(""); //we made a state variable which will track the value inside the search box
@@ -27,7 +28,13 @@ const Body = () => {
     setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants); //updating both lists
 
   };
-  console.log()
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus == false)
+    return (
+      <h2>Looks like you are offline check your internet status</h2>
+    );
 
   //---------**** Shimmer UI ****------------//
   return listofRestaurants == 0 ? (
@@ -44,7 +51,7 @@ const Body = () => {
       {<Shimmer></Shimmer>}
       {<Shimmer></Shimmer>}
       {<Shimmer></Shimmer>}
-      
+
 
     </div>
   ) : (
@@ -77,7 +84,7 @@ const Body = () => {
       <div className="res-container">
 
         {filteredRestaurant.map((restaurant) => (
-         <Link to = {"/restaurants/" + restaurant?.data?.storeUuid }> <RestaurantCard key={restaurant?.data?.storeUuid} resData={restaurant} /></Link>  //storeUid is given in the data
+          <Link to={"/restaurants/" + restaurant?.data?.storeUuid}> <RestaurantCard key={restaurant?.data?.storeUuid} resData={restaurant} /></Link>  //storeUid is given in the data
 
         ))}
       </div>

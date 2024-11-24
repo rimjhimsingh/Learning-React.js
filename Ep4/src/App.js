@@ -1,8 +1,7 @@
-import React from "react";
+import React, {lazy, Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header"; 
 import Body from "./components/Body";
-
 import {
     createBrowserRouter,
     RouterProvider,
@@ -13,6 +12,10 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenuCard from "./components/RestaurantMenuCard"
 
+// import Grocery from "./components/Grocery"
+
+//lazily importing the grocery
+const Grocery = lazy ( () => import("./components/Grocery"));
 
 // this is the Layout where everything else will go 
 // it is a component which is a normal function in js, returns a JSX object
@@ -40,6 +43,12 @@ const appRouter = createBrowserRouter([
             {
                 path: "/contact",
                 element: <Contact/>
+            },
+            {
+                path: "/grocery",
+                element: <Suspense fallback = {<h1>Loading</h1>}>
+                    <Grocery/>
+                    </Suspense>  
             },
             {
                 path: "/restaurants/:resId", //this means that resId is dynamic, will chnage with restaurants
