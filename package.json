@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@syncfusion/ej2-react-notifications": "^27.1.50",
-    "parcel": "^2.12.0",
+    "@tailwindcss/postcss": "^4.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0"
@@ -21,6 +21,22 @@
     "last 2 firefox version"
   ],
   "devDependencies": {
-    "process": "^0.11.10"
-  }
+    "@eslint/js": "^9.21.0",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react": "^7.37.4",
+    "globals": "^16.0.0",
+    "parcel": "^2.13.3",
+    "postcss": "^8.5.1",
+    "process": "^0.11.10",
+    "tailwindcss": "^4.0.0"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rimjhimsingh/Learning-React.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rimjhimsingh/Learning-React.js/issues"
+  },
+  "homepage": "https://github.com/rimjhimsingh/Learning-React.js#readme"
 }

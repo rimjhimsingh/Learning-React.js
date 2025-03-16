@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, {promotedLabel} from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import resList from "../utils/constants"
 import Shimmer from "./Shimmer.js"
@@ -12,18 +12,21 @@ const Body = () => {
   //make a copy of this list, and we use the copy to diaply on UI and use the original to search and perform functionalities on 
 
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-
+  
   const [searchText, setsearchText] = useState(""); //we made a state variable which will track the value inside the search box
-
+  const PromotedCard = promotedLabel(RestaurantCard); //for the promoted label
   useEffect(() => {
     fetchData();
   }, []
   );
 
   const fetchData = async () => {
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+//    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+   
+    const data = await fetch(" https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6460176&lng=77.3695166&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+
     const json = await data.json();
-    console.log(json);
+    console.log("i am printing the data that is fetched", json);
     setlistofRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants); //updating both lists
 
@@ -55,12 +58,14 @@ const Body = () => {
 
     </div>
   ) : (
+    
     //---------**** Search Box ****------------//
-    <div className="body-container">
-      <div className="search">
-        <input type="text" className="search-box" input={searchText} onChange={(e) => setsearchText(e.target.value)} />
-        <button className="search-btn" onClick={() => {
-
+    <div className="">
+      <div className="flex">
+      <div className="search m-4 p-4 ">
+        <input type="text" className="border-black border-solid" input={searchText} onChange={(e) => setsearchText(e.target.value)} />
+        <button className="px-4 py-2 bg-yellow-100 m-4 rounded-lg hover:bg-amber-200" onClick={() => {
+          
           const filteredList = listofRestaurants.filter((res) => {
             return res?.info?.name.toLowerCase().includes(searchText.toLowerCase())
           });
@@ -71,8 +76,9 @@ const Body = () => {
 
       </div>
       {/* Top Rated Restaurants */}
-      <div className="filter" >
-        <button className="btn" onClick={() => {
+      
+      <div className="top-rated m-4 p-4" >
+        <button className="px-4 py-2 bg-yellow-100 m-4 rounded-lg hover:bg-amber-200" onClick={() => {
           const filteredList = listofRestaurants.filter(
             (res) => res.info.avgRating > 4.5);
           setFilteredRestaurant(filteredList);
@@ -81,14 +87,26 @@ const Body = () => {
         > Top rated restaurants!</button>
       </div>
 
-      <div className="res-container">
-
-        {filteredRestaurant.map((restaurant) => (
-          <Link to={"/restaurants/" + restaurant?.data?.storeUuid}> <RestaurantCard key={restaurant?.data?.storeUuid} resData={restaurant} /></Link>  //storeUid is given in the data
-
-        ))}
       </div>
-    </div>
+      
+     
+      <div className="flex flex-wrap">
+      {filteredRestaurant.map((restaurant) => (
+        
+     // <Link to={"/restaurants/" + restaurant?.data?.storeUuid}> //old API
+        <Link to={"/restaurants/" + restaurant?.info?.id}>
+        {
+          
+          //if the promoted label is true then call the component to render promoted resCard
+          restaurant?.info?.isOpen ? <PromotedCard resData={restaurant}/> : <RestaurantCard key={restaurant?.data?.storeUuid} resData={restaurant}/>
+        } 
+       </Link>  //storeUid is given in the data
+
+      ))}
+      </div>
+      </div>
+      
+    
   )
 }
 export default Body;

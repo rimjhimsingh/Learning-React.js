@@ -51,7 +51,7 @@ const appRouter = createBrowserRouter([
                     </Suspense>  
             },
             {
-                path: "/restaurants/:resId", //this means that resId is dynamic, will chnage with restaurants
+                path: "/restaurants/:resId", //this means that resId is dynamic, will chge with restaurants
                 element: <RestaurantMenuCard/>,
             }
         ],
